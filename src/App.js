@@ -1,22 +1,19 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './routes/home/home.component';
+import Navigation from './routes/navigation/navigation.component';
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/home" element={<Home />} />
-      <Route
-        path="*"
-        element={
-          <main>
-            <h1>Something Went Wrong!</h1>
-            <p>No routes match this path...</p>
-          </main>
-        }
-      />
+      <Route path="/" element={<Navigation />} >
+        <Route index element={<Home />} />
+        <Route path="shop" element={<div>I AM THE SHOP PAGE</div>} />
+      </Route>
     </Routes>
   );
 };
 
 export default App;
+
+
