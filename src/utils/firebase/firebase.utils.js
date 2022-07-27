@@ -22,6 +22,7 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 export const db = getFirestore();
 
@@ -30,7 +31,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   const userSnapshot = await getDoc(userDocRef);
 
   if (!userSnapshot.exists()) {
-    // create / set the document with teh data from userAuth in my collection
+    // create / set the document with the data from userAuth in my collection
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
