@@ -2,10 +2,11 @@ import Button from '../button/button.component';
 
 import './cart-dropdown.styles.scss';
 
-const CartDropdown = () => {
+const CartDropdown = ({cartItems}) => {
   return (
     <div className='cart-dropdown-container'>
-        <div className='cart-items' />
+        <div className='cart-items'>
+        </div>
         <Button>Go to checkout</Button>
     </div>
   )
