@@ -1,16 +1,17 @@
 import { createContext, useState } from 'react';
 
 export const addCartItem = (cartItems, productToAdd) => {
-  //  find if cartItems contains productToAdd
+  // Check if item already in cart
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id);
 
+  // If yes, increment quantity and return new array
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
       cartItem.id === productToAdd.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
     );
   }
 
-  // return new array with modified / new cart item
+  // If no, add item to cart and return new array
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
