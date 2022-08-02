@@ -2,9 +2,7 @@ import CategoriesMenu from '../../components/categories-menu/categories-menu.com
 import categories from '../../data/categories.json';
 
 const Home = () => {
-  return (
-    <CategoriesMenu categories={categories} />
-  )
+  return <CategoriesMenu categories={categories} />;
 };
 
 export default Home;
