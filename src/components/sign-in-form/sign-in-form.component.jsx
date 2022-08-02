@@ -38,7 +38,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -47,6 +47,7 @@ const SignInForm = () => {
           break;
         case 'auth/user-not-found':
           alert('User not found');
+          break;
         default:
           console.log(error);
       }
