@@ -1,0 +1,8 @@
+addCartItem(cartItems, productToAdd) => returns new array.
+
+if productToAdd in cart:
+    increment quantity
+
+else: 
+    add productToAdd to new cartItems array.
+
