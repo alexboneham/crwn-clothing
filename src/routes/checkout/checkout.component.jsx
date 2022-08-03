@@ -24,8 +24,8 @@ const Checkout = () => {
 
       <div className='items-container'>
         {cartItems.map((item) => (
-          <div>
-            <CheckoutItem key={item.id} item={item} />  
+          <div key={item.id}>
+            <CheckoutItem item={item} />  
             <hr />
           </div>
         ))}

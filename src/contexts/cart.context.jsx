@@ -1,5 +1,9 @@
 import { createContext, useState, useEffect } from 'react';
 
+/*
+  Helper functions for context
+*/
+
 export const addCartItem = (cartItems, productToAdd) => {
   // Check if item already in cart
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id);
@@ -35,13 +39,34 @@ export const removeCartItem = (cartItems, productToRemove) => {
   });
 };
 
+export const changeItemQuantityInCart = (cartItems, productToChange, actionToPerform) => {
+  if (actionToPerform === 'increment') {
+    return cartItems.map((item) => (item.id === productToChange.id ? { ...item, quantity: item.quantity + 1 } : item));
+  } else if (actionToPerform === 'decrement') {
+    if (productToChange.quantity > 1) {
+      return cartItems.map((item) =>
+        item.id === productToChange.id ? { ...item, quantity: item.quantity - 1 } : item
+      );
+    }
+    return removeCartItem(cartItems, productToChange);
+  } else {
+    console.log('Error occured while changing quantity');
+    return;
+  }
+};
+
+/* 
+  Configure Context and Provider
+*/
+
 export const CartContext = createContext({
   isCartOpen: false,
   setIsCartOpen: () => {},
   cartItems: [],
+  cartCount: 0,
   addItemToCart: () => {},
   removeItemFromCart: () => {},
-  cartCount: 0,
+  changeCartItemQuantity: () => {},
 });
 
 export const CartProvider = ({ children }) => {
@@ -50,10 +75,12 @@ export const CartProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
+    // Count cart items
     const newCartCount = cartItems.reduce((acc, next) => acc + next.quantity, 0);
     setCartCount(newCartCount);
   }, [cartItems]);
 
+  // Cart manipulation functions
   const addItemToCart = (product) => {
     setCartItems(addCartItem(cartItems, product));
   };
@@ -62,7 +89,19 @@ export const CartProvider = ({ children }) => {
     setCartItems(removeCartItem(cartItems, product));
   };
 
-  const value = { isCartOpen, setIsCartOpen, addItemToCart, cartItems, cartCount, removeItemFromCart };
+  const changeCartItemQuantity = (product, action) => {
+    setCartItems(changeItemQuantityInCart(cartItems, product, action));
+  };
+
+  const value = {
+    isCartOpen,
+    setIsCartOpen,
+    addItemToCart,
+    cartItems,
+    cartCount,
+    removeItemFromCart,
+    changeCartItemQuantity,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
