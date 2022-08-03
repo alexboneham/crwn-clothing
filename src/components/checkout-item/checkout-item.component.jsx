@@ -20,9 +20,9 @@ const CheckoutItem = ({ item }) => {
       <img src={imageUrl} alt={name} />
       <span>{name}</span>
       <span>
-        <span onClick={changeQuantity} >{'< '}</span>
+        <span className='quantity-symbol' onClick={changeQuantity} >{'< '}</span>
         {quantity}
-        <span onClick={changeQuantity} >{' >'}</span>
+        <span className='quantity-symbol' onClick={changeQuantity} >{' >'}</span>
       </span>
       <span>{price}</span>
       <span className="remove" onClick={removeItem}>
