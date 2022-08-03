@@ -11,6 +11,8 @@ const Checkout = () => {
   return (
     <div className="checkout-container">
 
+      {cartItems.length ? (
+
       <div className="header">
         <div className='details'>
           <span>Product</span>
@@ -21,6 +23,12 @@ const Checkout = () => {
         </div>
         <hr />
       </div>
+
+      ) : (
+      <div className='empty-message'>
+        Your cart is empty 
+      </div>
+      )}
 
       <div className='items-container'>
         {cartItems.map((item) => (
