@@ -1,3 +1,21 @@
 .checkout-container {
+  width: 90%;
+  margin: auto;
+  // display: flex;
+  // flex-direction: column;
 
+  .header {
+    margin-bottom: 20px;
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .items-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
 }

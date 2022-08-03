@@ -13,11 +13,11 @@ const CheckoutItem = ({ item }) => {
   
   return (
     <div className="checkout-item-container">
-      <img src={imageUrl} alt={name} />
-      <span>{name}</span>
-      <span>{'< '}{quantity}{' >'}</span>
-      <span>{price}</span>
-      <span className='remove' onClick={removeItem}>X</span>
+        <img src={imageUrl} alt={name} />
+        <span>{name}</span>
+        <span>{'< '}{quantity}{' >'}</span>
+        <span>{price}</span>
+        <span className='remove' onClick={removeItem}>X</span>
     </div>
   );
 };

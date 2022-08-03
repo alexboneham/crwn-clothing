@@ -10,16 +10,24 @@ const Checkout = () => {
 
   return (
     <div className="checkout-container">
-      <div className="headings">
-        <span>Product</span>
-        <span>Description</span>
-        <span>Quantity</span>
-        <span>Price</span>
-        <span>Remove</span>
+
+      <div className="header">
+        <div className='details'>
+          <span>Product</span>
+          <span>Description</span>
+          <span>Quantity</span>
+          <span>Price</span>
+          <span>Remove</span>
+        </div>
+        <hr />
       </div>
+
       <div className='items-container'>
         {cartItems.map((item) => (
-          <CheckoutItem key={item.id} item={item} />
+          <div>
+            <CheckoutItem key={item.id} item={item} />  
+            <hr />
+          </div>
         ))}
       </div>
     </div>
