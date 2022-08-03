@@ -26,17 +26,8 @@ export const removeCartItem = (cartItems, productToRemove) => {
     console.log('Item not found in cart');
     return;
   }
-
-  // If quantity is 1 or less, remove item
-  const itemIndex = cartItems.findIndex((item) => item.id === productToRemove.id);
-  if (!productToRemove.quantity > 1) {
-    const newArr = cartItems.slice();
-    return newArr.splice(itemIndex, 1);
-  }
-  // Else decrement item quantity by 1
-  return cartItems.map((item) => {
-    return item.id === productToRemove.id ? { ...item, quantity: item.quantity - 1 } : item;
-  });
+  // Remove item
+  return cartItems.filter((item) => item.id !== productToRemove.id);
 };
 
 export const changeItemQuantityInCart = (cartItems, productToChange, actionToPerform) => {
