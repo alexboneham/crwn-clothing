@@ -6,28 +6,28 @@ import './checkout-item.styles.scss';
 const CheckoutItem = ({ item }) => {
   const { name, quantity, price, imageUrl } = item;
 
-  const { removeItemFromCart, changeCartItemQuantity } = useContext(CartContext);
-
-  const removeItem = () => removeItemFromCart(item);
-
-  const changeQuantity = (e) => {
-    const action = e.target.innerText === ' >' ? 'increment' : 'decrement'
-    return changeCartItemQuantity(item, action);
-  };
+  const { removeItemFromCart, decrementItemFromCart, addItemToCart } = useContext(CartContext);
 
   return (
     <div className="checkout-item-container">
-      <img src={imageUrl} alt={name} />
-      <span>{name}</span>
-      <span>
-        <span className='quantity-symbol' onClick={changeQuantity} >{'< '}</span>
-        {quantity}
-        <span className='quantity-symbol' onClick={changeQuantity} >{' >'}</span>
-      </span>
-      <span>{price}</span>
-      <span className="remove" onClick={removeItem}>
-        X
-      </span>
+      <div className="image-container">
+        <img src={imageUrl} alt={name} />
+      </div>
+      <span className="name">{name}</span>
+      <div className="quantity">
+        <span className="arrow" onClick={() => decrementItemFromCart(item)}>
+          &#10094;
+        </span>
+        <span className="value">{quantity}</span>
+        <span></span>
+        <span className="arrow" onClick={() => addItemToCart(item)}>
+          &#10095;
+        </span>
+      </div>
+      <span className="price">{price}</span>
+      <div className="remove-button" onClick={() => removeItemFromCart(item)}>
+        &#10005;
+      </div>
     </div>
   );
 };

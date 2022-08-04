@@ -30,20 +30,13 @@ export const removeCartItem = (cartItems, productToRemove) => {
   return cartItems.filter((item) => item.id !== productToRemove.id);
 };
 
-export const changeItemQuantityInCart = (cartItems, productToChange, actionToPerform) => {
-  if (actionToPerform === 'increment') {
-    return cartItems.map((item) => (item.id === productToChange.id ? { ...item, quantity: item.quantity + 1 } : item));
-  } else if (actionToPerform === 'decrement') {
-    if (productToChange.quantity > 1) {
-      return cartItems.map((item) =>
-        item.id === productToChange.id ? { ...item, quantity: item.quantity - 1 } : item
-      );
-    }
-    return removeCartItem(cartItems, productToChange);
-  } else {
-    console.log('Error occured while changing quantity');
-    return;
+export const removeSingleItemFromCart = (cartItems, productToChange) => {
+  if (productToChange.quantity > 1) {
+    return cartItems.map((item) =>
+      item.id === productToChange.id ? { ...item, quantity: item.quantity - 1 } : item
+    );
   }
+  return removeCartItem(cartItems, productToChange);
 };
 
 /* 
@@ -58,7 +51,7 @@ export const CartContext = createContext({
   cartTotal: 0,
   addItemToCart: () => {},
   removeItemFromCart: () => {},
-  changeCartItemQuantity: () => {},
+  decrementItemFromCart: () => {},
 });
 
 export const CartProvider = ({ children }) => {
@@ -85,8 +78,8 @@ export const CartProvider = ({ children }) => {
     setCartItems(removeCartItem(cartItems, product));
   };
 
-  const changeCartItemQuantity = (product, action) => {
-    setCartItems(changeItemQuantityInCart(cartItems, product, action));
+  const decrementItemFromCart = (product) => {
+    setCartItems(removeSingleItemFromCart(cartItems, product));
   };
 
   const value = {
@@ -97,7 +90,7 @@ export const CartProvider = ({ children }) => {
     cartCount,
     cartTotal,
     removeItemFromCart,
-    changeCartItemQuantity,
+    decrementItemFromCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
