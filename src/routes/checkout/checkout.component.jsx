@@ -30,7 +30,11 @@ const Checkout = () => {
       {cartItems.map((item) => (
         <CheckoutItem key={item.id} item={item} />
       ))}
-      <span className="total">Total: ${cartTotal}</span>
+      {cartItems.length ? (
+        <span className="total">Total: ${cartTotal}</span>
+      ) : (
+        <span className='empty-message'>Your cart is empty</span>
+      )}
     </div>
   );
 };
