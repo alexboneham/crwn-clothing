@@ -6,9 +6,6 @@ import CategoryPreview from '../../components/category-preview/category-preview.
 const CategoriesPreview = () => {
   const { categoriesMap } = useContext(CategoriesContext);
 
-  // const navigate = useNavigate();
-  // const navigateHandler = (categoriesMap[title]) => navigate(`/shop/${}`)
-
   return (
     <Fragment>
       {Object.keys(categoriesMap).map((title) => {

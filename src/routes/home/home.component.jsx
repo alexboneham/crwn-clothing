@@ -1,8 +1,8 @@
-import CategoriesMenu from '../../components/categories-menu/categories-menu.component';
+import Directory from '../../components/directory/directory.component';
 import categories from '../../data/categories.json';
 
 const Home = () => {
-  return <CategoriesMenu categories={categories} />;
+  return <Directory categories={categories} />;
 };
 
 export default Home;
