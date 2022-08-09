@@ -7,7 +7,7 @@ import {
   BaseSpan,
   Quantity,
   Value,
-  Button,
+  BaseButton,
   RemoveButton,
 } from './checkout-item.styles.jsx';
 
@@ -26,13 +26,13 @@ const CheckoutItem = ({ item }) => {
       </ImageContainer>
       <BaseSpan>{name}</BaseSpan>
       <Quantity>
-        <Button onClick={decrementItemHandler}>
+        <BaseButton onClick={decrementItemHandler}>
           &#10094;
-        </Button>
+        </BaseButton>
         <Value>{quantity}</Value>
-        <Button onClick={addItemHandler}>
+        <BaseButton onClick={addItemHandler}>
           &#10095;
-        </Button>
+        </BaseButton>
       </Quantity>
       <BaseSpan>{price}</BaseSpan>
       <RemoveButton onClick={removeItemHandler}>

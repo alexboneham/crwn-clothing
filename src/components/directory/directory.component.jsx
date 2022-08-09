@@ -1,8 +1,10 @@
 import DirectoryItem from '../directory-item/directory-item.component';
+import { categories } from '../../data/categories';
 
-import {CategoriesMenuContainer} from './directory.styles.jsx';
+import { CategoriesMenuContainer } from './directory.styles.jsx';
 
-const Directory = ({ categories }) => {
+
+const Directory = () => {
   return (
     <CategoriesMenuContainer>
       {categories.map((category) => (
