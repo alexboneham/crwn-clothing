@@ -25,12 +25,14 @@ export const HeaderBlock = styled.div`
   }
 `;
 
-export const Total = styled.span`
+export const BaseSpan = styled.span`
   margin-top: 30px;
+`;
+
+export const Total = styled(BaseSpan)`
   margin-left: auto;
   font-size: 36px;
 `;
-export const EmptyMessage = styled.span`
-  margin-top: 30px;
+export const EmptyMessage = styled(BaseSpan)`
   font-size: 20px;
 `;

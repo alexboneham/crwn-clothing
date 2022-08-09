@@ -4,9 +4,8 @@ import { CartContext } from '../../contexts/cart.context';
 import {
   CheckoutItemContainer,
   ImageContainer,
-  Name,
-  QuantityContainer,
-  Price,
+  BaseSpan,
+  Quantity,
   Value,
   Button,
   RemoveButton,
@@ -25,8 +24,8 @@ const CheckoutItem = ({ item }) => {
       <ImageContainer>
         <img src={imageUrl} alt={name} />
       </ImageContainer>
-      <Name>{name}</Name>
-      <QuantityContainer>
+      <BaseSpan>{name}</BaseSpan>
+      <Quantity>
         <Button onClick={decrementItemHandler}>
           &#10094;
         </Button>
@@ -34,8 +33,8 @@ const CheckoutItem = ({ item }) => {
         <Button onClick={addItemHandler}>
           &#10095;
         </Button>
-      </QuantityContainer>
-      <Price>{price}</Price>
+      </Quantity>
+      <BaseSpan>{price}</BaseSpan>
       <RemoveButton onClick={removeItemHandler}>
         &#10005;
       </RemoveButton>

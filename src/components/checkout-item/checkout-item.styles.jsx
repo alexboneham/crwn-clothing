@@ -20,24 +20,20 @@ export const ImageContainer = styled.div`
   }
 `;
 
-export const Name = styled.span`
+export const BaseSpan = styled.span`
   width: 23%;
 `;
 
-export const QuantityContainer = styled.div`
+export const Quantity = styled.div`
   width: 23%;
   display: flex;
-`;
-
-export const Price = styled.span`
-  width: 23%;
 `;
 
 export const Value = styled.span`
   margin: 0 10px;
 `;
 
-export const Button = styled.button`
+export const BaseButton = styled.button`
   all: unset;
   cursor: pointer;
 
@@ -46,6 +42,6 @@ export const Button = styled.button`
   }
 `
 
-export const RemoveButton = styled(Button)`
+export const RemoveButton = styled(BaseButton)`
     padding-left: 12px;
 `;
