@@ -45,6 +45,13 @@ export const CART_ACTION_TYPES = {
   SET_IS_CART_OPEN: 'SET_IS_CART_OPEN',
 };
 
+const INITIAL_STATE = {
+  cartItems: [],
+  cartCount: 0,
+  cartTotal: 0,
+  isCartOpen: false,
+};
+
 const cartReducer = (state, action) => {
   const { type, payload } = action;
 
@@ -62,13 +69,6 @@ const cartReducer = (state, action) => {
     default:
       throw new Error(`Unhandled type of ${type} in cartReducer`);
   }
-};
-
-const INITIAL_STATE = {
-  cartItems: [],
-  cartCount: 0,
-  cartTotal: 0,
-  isCartOpen: false,
 };
 
 export const CartProvider = ({ children }) => {
