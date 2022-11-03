@@ -1,8 +1,9 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// import logger from 'redux-logger';
-import { loggerMiddleware } from './middleware/logger';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+// import { loggerMiddleware } from './middleware/logger';
 
 import { rootReducer } from './root-reducer';
 
@@ -15,7 +16,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // Add middleware only if not in production
-const middleWares = [process.env.NODE_ENV !== 'production' && loggerMiddleware].filter(Boolean);
+const middleWares = [process.env.NODE_ENV !== 'production' && logger, thunk].filter(Boolean);
 
 // Compose enhancer from Redux Dev Tools if not in production, else compose method from redux
 const composeEnhancer =
